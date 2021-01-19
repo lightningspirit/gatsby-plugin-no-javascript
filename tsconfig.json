@@ -5,6 +5,7 @@
     "sourceMap": true,
     "target": "es5",
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "rootDir": "src",
     "lib": [
       "es6",
