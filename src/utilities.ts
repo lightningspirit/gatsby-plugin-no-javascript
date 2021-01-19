@@ -1,7 +1,15 @@
 import { PluginOptions } from './gatsby-ssr'
 
-export function checkPathExclusion (pathname: string, pluginOptions: PluginOptions): boolean {
-  if (!pluginOptions.excludePaths) return false
+function testPath (pathname: string, pattern?: RegExp | string): boolean {
+  if (!pattern) return false
 
-  return RegExp(pluginOptions.excludePaths).test(pathname)
+  return RegExp(pattern).test(pathname)
+}
+
+export function checkPathExclusion (pathname: string, pluginOptions: PluginOptions): boolean {
+  return testPath(pathname, pluginOptions.excludePaths);
+}
+
+export function checkPathInclusion (pathname: string, pluginOptions: PluginOptions): boolean {
+  return testPath(pathname, pluginOptions.includePaths);
 }
